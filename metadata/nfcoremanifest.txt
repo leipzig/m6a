@@ -1,0 +1,9 @@
+group,replicate,fastq_1,fastq_2,antibody,control
+HepG2_IFN_Input,1,SRP012098/SRR456549/HepG2_IFN_Input.fastq,,Input,
+HepG2_IFN_IP,1,SRP012098/SRR456548/HepG2_IFN_IP.fastq,,IP,HepG2_IFN_Input
+HepG2_HGF_Input,1,SRP012098/SRR456547/HepG2_HGF_Input.fastq,,Input,
+HepG2_HGF_IP,1,SRP012098/SRR456546/HepG2_HGF_IP.fastq,,IP,HepG2_HGF_Input
+HepG2_HS_Input,1,SRP012098/SRR456545/HepG2_HS_Input.fastq,,Input,
+HepG2_HS_IP,1,SRP012098/SRR456544/HepG2_HS_IP.fastq,,IP,HepG2_HS_Input
+HepG2_UV_Input,1,SRP012098/SRR456543/HepG2_UV_Input.fastq,,Input,
+HepG2_UV_IP,1,SRP012098/SRR456542/HepG2_UV_IP.fastq,,IP,HepG2_UV_Input
