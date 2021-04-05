@@ -1,14 +1,15 @@
 I am interested in the potential for reproducible papers to be used the peer review process.
-The paper received [13 "contrasting" citations](https://scite.ai/reports/topology-of-the-human-and-WDmMRO?contradicting=true&mentioning=false&page=1&supporting=false) in scite.ai, indicating some groups found different 
+
+A highly-cited paper from 2010, ["Topology of the human and mouse m6A RNA methylomes revealed by m6A-seq"](https://www.nature.com/articles/nature11112), received [13 "contrasting" citations](https://scite.ai/reports/topology-of-the-human-and-WDmMRO?contradicting=true&mentioning=false&page=1&supporting=false) in scite.ai, indicating some groups found different 
 
 - mRNA splicing in METTL3 knockdown cells
 - number of peaks
 - peak location 
 - overall methylation levels
 
-In order to study the possible effect of bioinformatic approaches to this problem employed in Dominissini et al.
+In order to study the possible role of bioinformatic approaches to this problem employed in Dominissini et al., I am proposing a "test of robustness", in which different tools, parameters, references, subsets are explored.
 
-Rather than attempt to faithfully reproduce this paper, I have used a couple off-the-shelf pipelines to reanalyze this data:
+Rather than attempt to faithfully reproduce this paper using its original analysis stack, I have used a couple off-the-shelf pipelines to reanalyze this data:
 - https://github.com/eQTL-Catalogue/rnaseq - The workflow processes raw data from FastQ inputs (FastQC, Trim Galore!), aligns the reads (STAR or HiSAT2), generates gene counts (featureCounts, StringTie) and performs extensive quality-control on the results (RSeQC, dupRadar, Preseq, edgeR, MultiQC).
 - https://github.com/kingzhuky/meripseqpipe - MeRIP-seq analysis pipeline arranged multiple alignment tools, peakCalling tools, Merge Peaks' methods and methylation analysis methods.
 
