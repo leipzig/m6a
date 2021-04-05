@@ -351,7 +351,7 @@ process makeBED12 {
     shell:      
     '''
     gtf_file=!{gtf}
-    gtfToGenePred -genePredExt -geneNameAsName2 $gtf_file ${gtf_file/.gtf/.tmp}
+    gtfToGenePred -ignoreGroupsWithoutExons -genePredExt -geneNameAsName2 $gtf_file ${gtf_file/.gtf/.tmp}
     genePredToBed ${gtf_file/.gtf/.tmp} ${gtf_file/.gtf/.bed}
     '''
 }
@@ -1243,7 +1243,11 @@ process Meyer{
                         Step 5 Differential expression analysis
 ========================================================================================
 */
-process HtseqCount{
+process HtseqCountNewToYou{
+    container 'quay.io/biocontainers/htseq:0.13.5--py39h70b41aa_1'
+    // leipzig: for some unknown reason this count not find htseq-count in the conda path 
+    // from the universal project docker container
+    
     label 'analysis'
     publishDir "${params.outdir}/expressionAnalysis/htseq-count", mode: 'link', overwrite: true
 
@@ -1253,8 +1257,36 @@ process HtseqCount{
     file gtf
 
     output:
-    file "*input*.count" into htseq_count_input, htseq_count_input_to_arrange
+    file "*.bam.txt" into htseq_counts
+    
+    when:
+    !params.skip_expression
+
+    script:
+    println LikeletUtils.print_purple("Generate gene counts with htseq-count")
+    strand_info = params.stranded == "no" ? "no" : params.stranded == "reverse" ? "reverse" : "yes"
+   // strand_info = params.single_end ? " " : " -p"
+    """
+    bash $baseDir/bin/htseq_count.sh $gtf $strand_info ${task.cpus}
+    #Rscript $baseDir/bin/get_htseq_matrix.R $formatted_designfile ${task.cpus} 
+    # Rscript $baseDir/bin/feature_count.R $formatted_designfile $gtf $strand_info ${task.cpus}
+    """ 
+}
+
+process HtseqMatrixNew{
+    label 'analysis'
+    publishDir "${params.outdir}/expressionAnalysis/htseq-count", mode: 'link', overwrite: true
+
+    input:
+    file bam_bai_file from sort_bam.collect()
+    file formatted_designfile from formatted_designfile.collect()
+    file gtf
+    file htseqcounts from htseq_counts.collect()
+
+    output:
     file "expression.matrix" into htseq_results
+    file "*input*.count" into htseq_count_input, htseq_count_input_to_arrange
+
 
     when:
     !params.skip_expression
@@ -1264,7 +1296,7 @@ process HtseqCount{
     strand_info = params.stranded == "no" ? "no" : params.stranded == "reverse" ? "reverse" : "yes"
    // strand_info = params.single_end ? " " : " -p"
     """
-    bash $baseDir/bin/htseq_count.sh $gtf $strand_info ${task.cpus}
+    #bash $baseDir/bin/htseq_count.sh $gtf $strand_info ${task.cpus}
     Rscript $baseDir/bin/get_htseq_matrix.R $formatted_designfile ${task.cpus} 
     # Rscript $baseDir/bin/feature_count.R $formatted_designfile $gtf $strand_info ${task.cpus}
     """ 
