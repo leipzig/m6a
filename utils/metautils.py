@@ -82,6 +82,19 @@ class srpMeta():
         res = dict(zip(types, files))
         return(res)
     
+    def getRunsByTreatment(self,treatment,gstype='local',flatten=True,compress=True):
+        """
+        flatten - all files go in top directory vs SRP/EXP/SRR
+        compress - .gz suffix
+        """
+        self.process(gstype=gstype)
+        files=[]
+        filesofinterest=self.st[self.st['treatment']==treatment].copy()
+        types=list(filesofinterest['casecontrol'].astype(str))
+        files=list(filesofinterest['run'].astype(str))
+        res = dict(zip(types, files))
+        return(res)
+        
     def getControlRun(self,treatment):
         run=self.st.loc[(self.st['treatment']==treatment) & (self.st['casecontrol']=='Input'),'run']
         return(run.to_string(index=False))
@@ -96,11 +109,11 @@ class srpMeta():
         """
         Manifest for https://github.com/kingzhuky/meripseqpipe
         """
-        #Sample_ID	input_FileName	ip_FileName	Group
-        #H1A_Endo	A	B	group_Endo
-        #H1A_ES	C	D	group_ES
-        #H1B_Endo	E	F	group_Endo
-        #H1B_ES	G	H	group_ES
+        #Sample_ID,input_FileName,ip_FileName,Group
+        #HS,HepG2_HS_Input,HepG2_HS_IP,HS
+        #IFN,HepG2_IFN_Input,HepG2_IFN_IP,IFN
+        #HGF,HepG2_HGF_Input,HepG2_HGF_IP,HGF
+        #UV,HepG2_UV_Input,HepG2_UV_IP,UV
         print("Sample_ID,input_FileName,ip_FileName,Group")
         for treatment in self.getTreatments():
             tdict=self.getFilesByTreatment(treatment,gstype=gstype,compress=compress)
@@ -108,7 +121,7 @@ class srpMeta():
 
     def printmeripseqConfig(self,gstype='local',compress=False):
         for treatment in self.getTreatments():
-            tdict=self.getFilesByTreatment(treatment,gstype=gstype,compress=compress)
+            tdict=self.getRunsByTreatment(treatment,gstype=gstype,compress=compress)
             print("['{}.input',['{}']],".format(treatment,tdict['Input']))
             print("['{}.ip',['{}']],".format(treatment,tdict['IP']))
 
