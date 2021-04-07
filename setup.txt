@@ -1,6 +1,12 @@
 pysradb download --srp SRP012098
 pysradb metadata --detailed --saveto metadata/SRP012098.metadata  SRP012098
 
+pysradb download --srp SRP012098
+pysradb metadata --detailed --saveto metadata/SRP012098.metadata  SRP012098
+
+pysradb download --srp SRP012098
+pysradb metadata --detailed --saveto metadata/SRP012098.metadata  SRP012098
+
 #obtained sequences through SRA run selector
 
 curl -fsSL get.nextflow.io | bash

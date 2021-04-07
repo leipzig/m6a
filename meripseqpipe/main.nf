@@ -1083,6 +1083,8 @@ process multiqc{
 /*
  * STEP 4 - 1  Peak Calling------MetPeak, MACS2, MATK
 */
+
+//metpeak is 3 hours
 process Metpeak {
     label 'peak_calling'
     publishDir "${params.outdir}/peakCalling/metpeak", mode: 'link', overwrite: true
