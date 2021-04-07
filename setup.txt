@@ -1,11 +1,8 @@
-pysradb download --srp SRP012098
-pysradb metadata --detailed --saveto metadata/SRP012098.metadata  SRP012098
-
-pysradb download --srp SRP012098
-pysradb metadata --detailed --saveto metadata/SRP012098.metadata  SRP012098
-
-pysradb download --srp SRP012098
-pysradb metadata --detailed --saveto metadata/SRP012098.metadata  SRP012098
+for srp in SRP012096 SRP012099 SRP012098
+do
+#pysradb download --srp $srp
+pysradb metadata --detailed --saveto metadata/$srp.metadata  $srp
+done
 
 #obtained sequences through SRA run selector
 

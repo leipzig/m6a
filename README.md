@@ -39,7 +39,7 @@ As a reproducible peer reviewer, you may...
 
 # Data
 
-Data from SRP012096 METTL3_KD1 RNA-seq and mock controls (8 files - see [metadata](metadata/SRP012098.metadata)
-Data from SRP012099 m6A RNA IP and Input for human RNA (untreated) - 
-Data from SRP012098 m6a RNA IP and Input for IFNg (200ng/ml) or HGF/SF (10 ng/ml) over night. Stress effects were tested in HepG2 cells by either 30 minutes incubation at 43ºC (heat shock) or UV irradiation)
+Data from SRP012096 METTL3_KD1 RNA-seq and mock controls (5 files) - [metadata](metadata/SRP012096.metadata)
+Data from SRP012099 m6A RNA IP and Input for human RNA (untreated) - 7 files [metadata](metadata/SRP012099.metadata)
+Data from SRP012098 m6a RNA IP and Input for IFNg (200ng/ml) or HGF/SF (10 ng/ml) over night. Stress effects were tested in HepG2 cells by either 30 minutes incubation at 43ºC (heat shock) or UV irradiation) - 8 samples [metadata](metadata/SRP012098.metadata)
 
