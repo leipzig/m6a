@@ -19,8 +19,8 @@ To run:
 adjust `max_cpus` and `max_memory` in `meripseqpipe/conf/m6a.config` as needed
 
 ```
-gsutil -m cp -r gs://truwl-dominissini/SRP012098 .
-gsutil -m cp -r gs://truwl-dominissini/refs .
+gsutil -m cp -r gs://truwl-dominissini/SRP012098 .  (or s3://dominissini/SRP012098)
+gsutil -m cp -r gs://truwl-dominissini/refs .       (or s3://dominissini/refs)
 curl -s https://get.nextflow.io | bash
 nextflow run meripseqpipe -profile m6a,docker
 ```
