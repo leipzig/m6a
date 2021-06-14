@@ -39,4 +39,6 @@ As a reproducible peer reviewer, you may...
 Data from SRP012098 (m6a RNA IP and Input for IFNg (200ng/ml) or HGF/SF (10 ng/ml) over night. Stress effects were tested in HepG2 cells by either 30 minutes incubation at 43ºC (heat shock) or UV irradiation)
 Data from SRP012096 (METTL3_KD1 RNA-seq and mock controls)
 
-
+# What has been done so far
+- Code to generate manifests for meripseqpipe and rna-seq pipelines (see utils/metautils.py)
+- [A RNA-seq comparison of METTL3 knockdown & control HepG2 cells](https://github.com/BarryDigby/GSE37001) by Barry Digby
