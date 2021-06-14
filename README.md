@@ -40,5 +40,5 @@ Data from SRP012098 (m6a RNA IP and Input for IFNg (200ng/ml) or HGF/SF (10 ng/m
 Data from SRP012096 (METTL3_KD1 RNA-seq and mock controls)
 
 # What has been done so far
-- Code to generate manifests for meripseqpipe and rna-seq pipelines (see utils/metautils.py)
+- Code to generate manifests for meripseqpipe and rna-seq pipelines (see [utils/metautils.py](https://github.com/leipzig/m6a/blob/main/utils/metautils.py))
 - [A RNA-seq comparison of METTL3 knockdown & control HepG2 cells](https://github.com/BarryDigby/GSE37001) by Barry Digby
