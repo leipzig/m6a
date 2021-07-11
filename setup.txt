@@ -1,5 +1,7 @@
-pysradb download --srp SRP012098
-pysradb metadata --detailed --saveto metadata/SRP012098.metadata  SRP012098
+for srp in SRP012096 SRP012099 SRP012098
+do
+pysradb metadata --detailed --saveto metadata/$srp.metadata  $srp
+done
 
 #obtained sequences through SRA run selector
 
@@ -8,3 +10,7 @@ nextflow pull guigolab/chip-nf
 
 
 gsutil cp -r gs://truwl-dominissini/* SRP012098/
+
+
+gsutil -m cp -r gs://truwl-dominissini/SRP012096 .
+gsutil -m cp -r gs://truwl-dominissini/SRP012099 .

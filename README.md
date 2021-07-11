@@ -19,11 +19,21 @@ To run:
 adjust `max_cpus` and `max_memory` in `meripseqpipe/conf/m6a.config` as needed
 
 ```
+gsutil -m cp -r gs://truwl-dominissini/SRP012098 .
+
+gsutil -m cp -r gs://truwl-dominissini/refs .
+
 gsutil -m cp -r gs://truwl-dominissini/SRP012098 .  (or s3://dominissini/SRP012098)
 gsutil -m cp -r gs://truwl-dominissini/refs .       (or s3://dominissini/refs)
+
+
+
 curl -s https://get.nextflow.io | bash
+nextflow run meripseqpipe -profile stress,docker
 nextflow run meripseqpipe -profile m6a,docker
+nextflow run meripseqpipe -profile kd,docker
 ```
+
 
 As a reproducible peer reviewer, you may...
 
@@ -31,13 +41,18 @@ As a reproducible peer reviewer, you may...
 - Swapping out tools, reference data, or even primary data as needed
 - Implementing further downstream analyses
 - Implement something more similar to the original analysis
+- Introduce new tools such as m6aviewer
 
 ...in order to evaluate the robustness of the results presented in this paper!
 
 
 # Data
-Data from SRP012098 (m6a RNA IP and Input for IFNg (200ng/ml) or HGF/SF (10 ng/ml) over night. Stress effects were tested in HepG2 cells by either 30 minutes incubation at 43ºC (heat shock) or UV irradiation)
-Data from SRP012096 (METTL3_KD1 RNA-seq and mock controls)
+## m6a
+Data from SRP012099 m6A RNA IP and Input for human RNA (untreated) - 7 files (4 IP/3 Input) [metadata](metadata/SRP012099.metadata)
+## Stress
+Data from SRP012098 m6a RNA IP and Input for IFNg (200ng/ml) or HGF/SF (10 ng/ml) over night. Stress effects were tested in HepG2 cells by either 30 minutes incubation at 43ºC (heat shock) or UV irradiation) - 8 samples (IFN/HGF/HS/UV IP/Input) [metadata](metadata/SRP012098.metadata)
+## Knockdown
+Data from SRP012096 METTL3_KD1 RNA-seq and mock controls - 5 files (2) - [metadata](metadata/SRP012096.metadata)
 
 # What has been done so far
 - Code to generate manifests for meripseqpipe and rna-seq pipelines (see [utils/metautils.py](https://github.com/leipzig/m6a/blob/main/utils/metautils.py))
