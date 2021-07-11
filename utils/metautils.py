@@ -24,8 +24,17 @@ class srpMeta():
     def __init__(self,SRP,gstype="gs"):
         self.srp=SRP
         self.st = pandas.read_csv("metadata/"+SRP+".metadata",sep="\t")
-        #library name GSM908336: HepG2_IFN_Input
-        self.st[['GSM','celltype','treatment','casecontrol']] = pandas.read_csv("metadata/"+SRP+".metadata",sep="\t")["library_name"].str.replace(' ','',regex=False).str.split('[_:]',expand=True)
+        #GSM908336: HepG2_IFN_Input; Homo sapiens; RNA-Seq
+        #self.st[['GSM','celltype','treatment','casecontrol']] = pandas.read_csv("metadata/"+SRP+".metadata",sep="\t")["library_name"].str.replace(' ','',regex=False).str.split('[_:]',expand=True)
+        if SRP=='SRP012098':
+            self.st[['GSM','celltype','treatment','casecontrol']] = pandas.read_csv("metadata/"+SRP+".metadata",sep="\t")["experiment_title"].str.replace(' ','',regex=False).str.replace(';.*','',regex=True).str.split('[_:]',expand=True)
+        elif SRP=='SRP012096':
+            self.st[['GSM','treatment','casecontrol']] = pandas.read_csv("metadata/"+SRP+".metadata",sep="\t")["experiment_title"].str.replace(' ','',regex=False).str.replace(';.*','',regex=True).str.replace('[0-9]$','',regex=True).str.split('[_:]',expand=True)
+            self.st['celltype']='HepG2'
+        elif SRP=='SRP012099':
+            self.st[['GSM','casecontrol']] = pandas.read_csv("metadata/"+SRP+".metadata",sep="\t")["experiment_title"].str.replace(' ','',regex=False).str.replace(';.*','',regex=True).str.replace('[0-9]$','',regex=True).str.split('[_:]',expand=True)
+            self.st['celltype']='HepG2'
+            self.st['treatment']='None'
         self.st['run']=self.st['celltype']+'_'+self.st['treatment']+'_'+self.st['casecontrol']
         self.st.columns = self.st.columns.str.replace('.', '',regex=False)
         self.st.columns = self.st.columns.str.replace(' ', '',regex=False)
@@ -116,7 +125,7 @@ class srpMeta():
         #UV,HepG2_UV_Input,HepG2_UV_IP,UV
         print("Sample_ID,input_FileName,ip_FileName,Group")
         for treatment in self.getTreatments():
-            tdict=self.getFilesByTreatment(treatment,gstype=gstype,compress=compress)
+            tdict=self.getRunsByTreatment(treatment,gstype=gstype,compress=compress)
             print("{},{},{},{}".format(treatment,tdict['Input'],tdict['IP'],treatment))
 
     def printmeripseqConfig(self,gstype='local',compress=False):

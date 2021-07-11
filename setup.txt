@@ -1,6 +1,5 @@
 for srp in SRP012096 SRP012099 SRP012098
 do
-#pysradb download --srp $srp
 pysradb metadata --detailed --saveto metadata/$srp.metadata  $srp
 done
 

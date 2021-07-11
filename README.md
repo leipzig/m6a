@@ -23,7 +23,9 @@ gsutil -m cp -r gs://truwl-dominissini/SRP012096 .
 gsutil -m cp -r gs://truwl-dominissini/SRP012099 .
 gsutil -m cp -r gs://truwl-dominissini/refs .
 curl -s https://get.nextflow.io | bash
+nextflow run meripseqpipe -profile stress,docker
 nextflow run meripseqpipe -profile m6a,docker
+nextflow run meripseqpipe -profile kd,docker
 ```
 
 As a reproducible peer reviewer, you may...
@@ -38,8 +40,11 @@ As a reproducible peer reviewer, you may...
 
 
 # Data
+## m6a
+Data from SRP012099 m6A RNA IP and Input for human RNA (untreated) - 7 files (4 IP/3 Input) [metadata](metadata/SRP012099.metadata)
+## Stress
+Data from SRP012098 m6a RNA IP and Input for IFNg (200ng/ml) or HGF/SF (10 ng/ml) over night. Stress effects were tested in HepG2 cells by either 30 minutes incubation at 43ºC (heat shock) or UV irradiation) - 8 samples (IFN/HGF/HS/UV IP/Input) [metadata](metadata/SRP012098.metadata)
+## Knockdown
+Data from SRP012096 METTL3_KD1 RNA-seq and mock controls - 5 files (2) - [metadata](metadata/SRP012096.metadata)
 
-Data from SRP012096 METTL3_KD1 RNA-seq and mock controls (5 files) - [metadata](metadata/SRP012096.metadata)
-Data from SRP012099 m6A RNA IP and Input for human RNA (untreated) - 7 files [metadata](metadata/SRP012099.metadata)
-Data from SRP012098 m6a RNA IP and Input for IFNg (200ng/ml) or HGF/SF (10 ng/ml) over night. Stress effects were tested in HepG2 cells by either 30 minutes incubation at 43ºC (heat shock) or UV irradiation) - 8 samples [metadata](metadata/SRP012098.metadata)
 
