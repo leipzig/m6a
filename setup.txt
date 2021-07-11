@@ -10,3 +10,7 @@ nextflow pull guigolab/chip-nf
 
 
 gsutil cp -r gs://truwl-dominissini/* SRP012098/
+
+
+gsutil -m cp -r gs://truwl-dominissini/SRP012096 .
+gsutil -m cp -r gs://truwl-dominissini/SRP012099 .
