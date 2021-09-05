@@ -49,11 +49,20 @@ As a reproducible peer reviewer, you may...
 # Data
 ## m6a
 Data from SRP012099 m6A RNA IP and Input for human RNA (untreated) - 7 files (4 IP/3 Input) [metadata](metadata/SRP012099.metadata)
+
 ## Stress
 Data from SRP012098 m6a RNA IP and Input for IFNg (200ng/ml) or HGF/SF (10 ng/ml) over night. Stress effects were tested in HepG2 cells by either 30 minutes incubation at 43ºC (heat shock) or UV irradiation) - 8 samples (IFN/HGF/HS/UV IP/Input) [metadata](metadata/SRP012098.metadata)
+
 ## Knockdown
 Data from SRP012096 METTL3_KD1 RNA-seq and mock controls - 5 files (2) - [metadata](metadata/SRP012096.metadata)
+
+# Mouse
+Data from SRP012100 
+- SRR456934 GSM908344: Mouse_Liver_IP
+- SRR456935 GSM908345: Mouse_Liver_Input
+
 
 # What has been done so far
 - Code to generate manifests for meripseqpipe and rna-seq pipelines (see [utils/metautils.py](https://github.com/leipzig/m6a/blob/main/utils/metautils.py))
 - [A RNA-seq comparison of METTL3 knockdown & control HepG2 cells](https://github.com/BarryDigby/GSE37001) by Barry Digby
+- meRIP analysis of heatshock stress and m6a 

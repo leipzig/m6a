@@ -1,0 +1,5 @@
+Sample_ID,input_FileName,ip_FileName,Group
+HS,HepG2_HS_Input,HepG2_HS_IP,HS
+IFN,HepG2_IFN_Input,HepG2_IFN_IP,IFN
+HGF,HepG2_HGF_Input,HepG2_HGF_IP,HGF
+UV,HepG2_UV_Input,HepG2_UV_IP,UV
