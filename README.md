@@ -66,4 +66,4 @@ Data from SRP012100
 - Code to generate manifests for meripseqpipe and rna-seq pipelines (see [utils/metautils.py](https://github.com/leipzig/m6a/blob/main/utils/metautils.py))
 - [A RNA-seq comparison of METTL3 knockdown & control HepG2 cells](https://github.com/BarryDigby/GSE37001) by Barry Digby
 - [Comparison of human METTL3 knockdown with mouse METTL3 KD](https://github.com/ssamberkar/m6a_robustness_analysis) in [Xu et al](https://www.nature.com/articles/s41586-021-03210-1) by Sandeep Amberkar
-
+- [Meripseqpipe usage](https://github.com/c-lonergan/m6a) by Charlie Lonergan
